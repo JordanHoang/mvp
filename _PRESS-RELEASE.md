@@ -17,28 +17,31 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > workout.log()
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > This product is for individuals who would like to keep track of their daily caloric intake and expenditure.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > workout.log() is a calorie tracker app that takes in to account the user's desired daily calorie goal, their fitness activity and their calorie consumption. Our proprietary algorithm calculates their net calories. The user is able to submit multiple logs throughout the day for each activity (food or exercise) and the tracker will increment or decrement their remaining calories. This product is useful for users attempting to gain or lose weight by allowing them to log and visualize their activities and allow them to adjust throughout the day.
 
 ## Problem ##
   > Describe the problem your product solves.
+  > Estimating and keeping track of caloric intake and expenditure off the top of your head throughout the day is very difficult and often leads to inaccurate measurements.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > workout.log() eliminates the guesswork. Our product will keep all of a user's activity in one central location to be referenced and added to throughout the day.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "workout.log() aims to benefit everybody from hardcore fitness enthusiasts to individuals just wanting to live a healthier lifestyle." - Jordan Hoang, CEO, CTO, CFO, President, Founder, Intern
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Getting started is super easy! Just create an account, submit your activities, and let workout.log() keep track of what daily net calories.
+
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > workout.log() has changed my life! Before, I was just trying to estimate my calories and was way off actual numbers. Now I can keep track of everything I do. Thanks workout.log()!
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > For any more questions, visit localhost:8000/FAQS or contact us at localhostL:8000/contact
+  
