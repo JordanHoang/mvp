@@ -7,7 +7,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentCalories: 2500,
+			currentCalories: -2500,
 			name: 'Jordan',
 			logs: []
 		};
@@ -29,13 +29,24 @@ class App extends React.Component {
 		});
 	}
 
+	updateCalorieCount(log) {
+		if (log.activity === 'exercise') {
+			this.setState({
+				currentCalories: this.state.currentCalories - parseInt(log.calories)
+			}) 
+		} else if (log.activity === 'food')
+			this.setState({
+				currentCalories: this.state.currentCalories + parseInt(log.calories)
+			})
+	}
+
 	render () {
 		return (
 			<div className="app">
 				<h1 className="title">workout.log()</h1>
 				<h3>Welcome {this.state.name}</h3>
 				<h4>Net calories: {this.state.currentCalories}</h4>
-				<ActivityForm updateLogs={this.updateLogs.bind(this)} />
+				<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} />
 				<h3>Today's Log</h3>
 				<LogWindow logs={this.state.logs} />
 			</div>
