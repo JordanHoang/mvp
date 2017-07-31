@@ -19,6 +19,7 @@ var app = express();
 app.use(parser.json());
 
 
+// route all requests 
 app.use('/', router);
 
 app.get('/bundle.js', browserify('./client/index.js', {

@@ -10,9 +10,11 @@ class LogWindow extends React.Component {
 	render() {
 		return (
 			<div className="logWindow">
-				<Log />
-				<Log />
-				<Log />
+				{this.props.logs.map( (log) => {
+					return (
+						<Log log={log} />
+					)
+				})}
 			</div>
 		);
 	}

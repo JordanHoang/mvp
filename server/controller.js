@@ -36,7 +36,9 @@ module.exports = {
 	users: {
 		// create a new user document
 		signup: (req, res) => {
-
+			var newUser = User ({
+				username: 'jordanhoang'
+			});
 		},
 		// check request credentials against users entity
 		signin: (req, res) => {
