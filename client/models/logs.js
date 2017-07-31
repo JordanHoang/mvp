@@ -13,10 +13,14 @@ export const getAllLogs = (callback) => {
 };
 
 export const postLog = (log, callback) => {
-	$.post(`${url}/logs`, (data) => {
-		callback(data);
-	})
-	.fail( (err) => {
-		console.log('Invalid post');
-	})
+	console.log('inside logs', log)
+	$.ajax({
+	  type: "POST",
+	  url: `${url}/logs`,
+	  data: JSON.stringify(log),
+	  contentType: 'application/json',
+	  success: (data) => {
+	  	callback(data);
+	  }
+	});
 };

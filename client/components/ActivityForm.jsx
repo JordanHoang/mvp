@@ -1,4 +1,5 @@
 import React from 'react';
+import * as LogModel from '../models/logs.js'
 
 class ActivityForm extends React.Component {
 	constructor(props) {
@@ -14,6 +15,16 @@ class ActivityForm extends React.Component {
 		console.log(e.target.description.value);
 		console.log(e.target.calories.value);
 
+		var newLog = {
+			activity: e.target.activity.value,
+			description: e.target.description.value,
+			calories: e.target.calories.value
+		};
+
+		LogModel.postLog(newLog, (data) => {
+			console.log('SUCCESSFUL POST')
+		});
+
 		e.preventDefault();
 	}
 
@@ -27,7 +38,7 @@ class ActivityForm extends React.Component {
 							<option value="food">Food</option>
 						</select>
 					<label>Description</label><input name="description"></input>
-					<label>Calories</label><input name="calories"></input>
+					<label>Calories</label><input type="number" name="calories"></input>
 					<button type="submit">Submit</button>
 				</form>
 			</div>

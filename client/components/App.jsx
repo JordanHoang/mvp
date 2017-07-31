@@ -18,8 +18,6 @@ class App extends React.Component {
 			this.setState({
 				logs: data
 			})
-
-			console.log('DATA ', this.state.logs)
 		});
 	}
 

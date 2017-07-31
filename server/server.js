@@ -16,11 +16,8 @@ mongoose.connect('mongodb://localhost/workoutLog');
 var app = express();
 
 // parse through requests
-app.use(parser.json());
+app.use(parser.json({type: 'application/json'}));
 
-
-// route all requests 
-app.use('/', router);
 
 app.get('/bundle.js', browserify('./client/index.js', {
 	transform: [ [ require('babelify'), { presets: ['es2015', 'react'] } ] ]
@@ -39,6 +36,9 @@ app.use( (req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   next();
 });
+
+// route all requests 
+app.use('/', router);
 
 app.use(function(req, res, next) {
   res.status(404).send('404 - Page Not Found');

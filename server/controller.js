@@ -1,3 +1,4 @@
+var bluebird = require('bluebird');
 var Log = require('../db/schemas.js').log
 var User = require('../db/schemas.js').user;
 
@@ -28,7 +29,6 @@ module.exports = {
 				}
 
 				res.sendStatus(201);
-
 			});
 		}
 	},

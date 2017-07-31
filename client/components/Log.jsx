@@ -36,7 +36,7 @@ class Log extends React.Component {
 			<div className="log">
 				<span>{this.state.formattedTime} </span>
 				<span>	{this.props.log.description} </span>
-				<span> {this.props.log.calories}</span>
+				<span> {this.props.log.calories} calories</span>
 			</div>
 		);
 	}
