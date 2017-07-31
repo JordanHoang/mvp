@@ -8,10 +8,19 @@ class ActivityForm extends React.Component {
 		};
 	}
 
+	handleSubmit(e) {
+
+		console.log(e.target.activity.value);
+		console.log(e.target.description.value);
+		console.log(e.target.calories.value);
+
+		e.preventDefault();
+	}
+
 	render() {
 		return (
 			<div className="activityForm">
-				<form method="POST">
+				<form method="POST" onSubmit={this.handleSubmit.bind(this)}>
 					<label>Activity</label>
 						<select name="activity">
 							<option value="exercise">Exercise</option>
