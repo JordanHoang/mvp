@@ -11,10 +11,6 @@ class ActivityForm extends React.Component {
 
 	handleSubmit(e) {
 
-		console.log(e.target.activity.value);
-		console.log(e.target.description.value);
-		console.log(e.target.calories.value);
-
 		var newLog = {
 			activity: e.target.activity.value,
 			description: e.target.description.value,
@@ -23,6 +19,7 @@ class ActivityForm extends React.Component {
 
 		LogModel.postLog(newLog, (data) => {
 			console.log('SUCCESSFUL POST')
+			this.props.updateLogs();
 		});
 
 		e.preventDefault();

@@ -21,13 +21,21 @@ class App extends React.Component {
 		});
 	}
 
+	updateLogs() {
+		LogModel.getAllLogs ( (data) => {
+			this.setState({
+				logs:data
+			})
+		});
+	}
+
 	render () {
 		return (
 			<div className="app">
 				<h1 className="title">workout.log()</h1>
 				<h3>Welcome {this.state.name}</h3>
 				<h4>Net calories: {this.state.currentCalories}</h4>
-				<ActivityForm />
+				<ActivityForm updateLogs={this.updateLogs.bind(this)} />
 				<h3>Today's Log</h3>
 				<LogWindow logs={this.state.logs} />
 			</div>

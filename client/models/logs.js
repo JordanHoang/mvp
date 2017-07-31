@@ -13,7 +13,6 @@ export const getAllLogs = (callback) => {
 };
 
 export const postLog = (log, callback) => {
-	console.log('inside logs', log)
 	$.ajax({
 	  type: "POST",
 	  url: `${url}/logs`,
