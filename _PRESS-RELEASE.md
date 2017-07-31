@@ -36,7 +36,7 @@ Once the project moves into development, the press release can be used as a touc
   > "workout.log() aims to benefit everybody from hardcore fitness enthusiasts to individuals just wanting to live a healthier lifestyle." - Jordan Hoang, CEO, CTO, CFO, President, Founder, Intern
 
 ## How to Get Started ##
-  > Getting started is super easy! Just create an account, submit your activities, and let workout.log() keep track of what daily net calories.
+  > Getting started is super easy! Just create an account, submit your activities, and let workout.log() keep track of your daily net calories.
 
 
 ## Customer Quote ##
