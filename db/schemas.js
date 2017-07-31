@@ -13,6 +13,10 @@ var logSchema = new Schema ({
 	calories: {
 		type: Number,
 		required: true
+	},
+	timestamps: {
+		type: Date,
+		default: Date.now
 	}
 });
 
