@@ -15,8 +15,9 @@ var logSchema = new Schema ({
 		required: true
 	},
 	timestamps: {
-		type: Date,
-		default: Date.now
+		type: String,
+		// get new date, convert to time string, split on spaces, get 0th index which is the time
+		default: new Date().toTimeString().split(' ')[0]
 	}
 });
 
