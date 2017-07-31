@@ -9,7 +9,9 @@ class Log extends React.Component {
 	render() {
 		return (
 			<div className="log">
-				<p>This is a log</p>
+				<span>4:51pm </span>
+				<span> Beer </span>
+				<span> 90 calories</span>
 			</div>
 		);
 	}

@@ -9,6 +9,10 @@ var browserify = require('browserify-middleware');
 var router = require('./routes.js');
 var config = require('../config.js')
 
+// mongo and mongoose
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/workoutLog');
+
 var app = express();
 
 // parse through requests
