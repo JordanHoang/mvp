@@ -69,7 +69,7 @@ class App extends React.Component {
 
 	updateSearchResults(hits) {
 		this.setState({
-			searchResults: hits
+			searchResults: hits.slice(0,6)
 		})
 
 	}

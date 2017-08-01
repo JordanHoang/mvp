@@ -1,5 +1,7 @@
 import React from 'react';
 import SearchResultEntry from './SearchResultEntry.jsx'
+import { render } from 'react-dom';
+import {Grid, Col} from 'react-bootstrap';
 
 class SearchResultWindow extends React.Component {
 	constructor(props) {
@@ -10,14 +12,13 @@ class SearchResultWindow extends React.Component {
 
 		return (
 			<div className="searchResultWindow">
-				{this.props.searchResults.map( (result) => {
-					console.log('result??', result.fields);
-					return (
-						<div>
-							<SearchResultEntry result={result.fields} />
-						</div>
-					)
-				})}
+				<Grid>
+
+					{this.props.searchResults.map( (result, i) => 
+							<Col xs={6} md={4}><SearchResultEntry result={result.fields} /></Col>
+					)}
+
+				</Grid>
 			</div>
 		);
 	}

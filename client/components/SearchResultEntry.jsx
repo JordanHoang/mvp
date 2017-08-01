@@ -8,9 +8,9 @@ class SearchResultEntry extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<span>{this.props.result.item_name}</span>
-				<span>{this.props.result.brand_name}</span>
+			<div className="searchResult">
+				<p>{this.props.result.brand_name} </p>
+				<p>{this.props.result.item_name} </p>
 			</div>
 		);
 	}
