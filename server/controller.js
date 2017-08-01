@@ -71,7 +71,7 @@ module.exports = {
 				}
 
 				res.status(201);
-				res.json(user.firstName);
+				res.json({firstName: user.firstName, desiredCalories: user.desiredCalories});
 			})
 		}
 	}

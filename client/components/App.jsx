@@ -24,10 +24,11 @@ class App extends React.Component {
 	}
 
 	// change isLoggedIn state upon correct signin
-	authentication(name) {
+	authentication(info) {
 		this.setState({
 			isLoggedIn: true,
-			name: name
+			name: info.firstName,
+			currentCalories: info.desiredCalories
 		})
 	}
 
