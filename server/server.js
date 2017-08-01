@@ -7,7 +7,7 @@ var browserify = require('browserify-middleware');
 
 // files
 var router = require('./routes.js');
-var config = require('../config.js')
+var config = require('react');
 
 // mongo and mongoose
 var mongoose = require('mongoose');
