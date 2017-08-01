@@ -13,26 +13,32 @@
 
 .welcome {
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	margin: 0px;
 }
 
 .signout {
 	float: right;
 	padding-right: 10px;
+	font-family: 'Roboto', sans-serif;
 }
 
 .signinPanel {
 	margin: auto;
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
 }
 
 .signupPanel {
 	margin: auto;
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
 }
 
 .remainingCals {
 	text-align: center;
 	font-size: 30px;
+	font-family: 'Roboto', sans-serif;
 }
 
 .positive {
@@ -46,6 +52,7 @@
 .activityForm {
 	margin: auto;
 	text-align: center;
+	font-family: 'Roboto', sans-serif;
 }
 
 .input {
@@ -61,12 +68,13 @@
 }
 
 .log {
-	border: 2px solid black;
+	border: 1px solid black;
 	padding: 5px 20px 5px 20px;
 	margin: auto;
 	margin-top: 5px;
 	width: 50%;
 	text-align: left;
+	font-family: 'Roboto', sans-serif;
 }
 
 .delete {
