@@ -12,7 +12,7 @@ class App extends React.Component {
 			userName: '',
 			name: '',
 			logs: [],
-			isLoggedIn: false
+			isLoggedIn: false,
 		};
 	}
 
@@ -76,11 +76,17 @@ class App extends React.Component {
 			return (
 				<div className="app">
 					<h1 className="title">workout.log()</h1>
-					<h3>Welcome {this.state.name}</h3>
-					<a href="#" onClick={this.handleSignout.bind(this)}>Signout</a>
-					<h4>Net calories: {this.state.currentCalories}</h4>
+					<h3 className="welcome">Welcome {this.state.name}</h3>
+					<a className="signout" href="#" onClick={this.handleSignout.bind(this)}>Signout</a>
+					<br />
+					<div className="remainingCals">
+						<span>Remaining Calories:
+							<span className={this.state.currentCalories > 0 ? 'positive' : 'negative'}> {this.state.currentCalories}
+							</span>
+						</span>
+					</div>
 					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
-					<h3>Today's Log</h3>
+					<h3 className='todaysLog'>Today's Log</h3>
 					<LogWindow logs={this.state.logs} updateLogs={this.updateLogs.bind(this)} userName = {this.state.userName} />
 				</div>
 			);
@@ -89,7 +95,7 @@ class App extends React.Component {
 		return (
 			<div className="app">
 				<h1 className="title">workout.log()</h1>
-				<AuthPanel authentication={this.authentication.bind(this)} />
+				<AuthPanel className="authPanel" authentication={this.authentication.bind(this)} />
 			</div>
 		)
 	}

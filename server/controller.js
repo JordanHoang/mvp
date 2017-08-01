@@ -42,7 +42,6 @@ module.exports = {
 
 				var userId = user._id;
 				var currentCal = user.currentCalories;
-				console.log('CURRENT ARRRR', user.logsPush);
 
 				if (user.logsPush.length) {
 					var lastId = user.logsPush[user.logsPush.length - 1].id
@@ -114,7 +113,7 @@ module.exports = {
 						var userId = user._id;
 						var currentCal = user.currentCalories;
 
-						if (req.body.activity === 'exercise') {
+						if (req.body.activity === 'food') {
 							req.body.calories = -req.body.calories
 						}
 

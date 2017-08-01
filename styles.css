@@ -1,3 +1,76 @@
+.body {
+	text-align: center;
+}
+.home {
+	height: 100%;
+}
+.title {
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	letter-spacing: 7px;
+	font-size: 50px;
+}
+
+.welcome {
+	text-align: center;
+}
+
+.signout {
+	float: right;
+	padding-right: 10px;
+}
+
+.signinPanel {
+	margin: auto;
+	text-align: center;
+}
+
+.signupPanel {
+	margin: auto;
+	text-align: center;
+}
+
+.remainingCals {
+	text-align: center;
+	font-size: 30px;
+}
+
+.positive {
+	color: red;
+}
+
+.negative {
+	color: green;
+}
+
+.activityForm {
+	margin: auto;
+	text-align: center;
+}
+
+.input {
+	margin: 5px;
+}
+
+.todaysLog {
+	text-align: center;
+}
+
+.logWindow {
+	text-align: center;
+}
+
+.log {
+	border: 2px solid black;
+	padding: 5px 20px 5px 20px;
+	margin: auto;
+	margin-top: 5px;
+	width: 50%;
+	text-align: left;
+}
+
 .delete {
 	padding-left: 5px;
+	color: black;
+	float: right;
 }

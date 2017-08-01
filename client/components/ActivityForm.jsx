@@ -34,12 +34,12 @@ class ActivityForm extends React.Component {
 			<div className="activityForm">
 				<form method="POST" onSubmit={this.handleSubmit.bind(this)}>
 					<label>Activity</label>
-						<select name="activity">
+						<select className="input" name="activity">
 							<option value="exercise">Exercise</option>
 							<option value="food">Food</option>
 						</select>
-					<label>Description</label><input name="description"></input>
-					<label>Calories</label><input type="number" name="calories"></input>
+					<label>Description</label><input className="input" name="description"></input>
+					<label>Calories</label><input className="input" type="number" name="calories"></input>
 					<button type="submit">Submit</button>
 				</form>
 			</div>
