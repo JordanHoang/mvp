@@ -93,7 +93,7 @@ class App extends React.Component {
 		};
 
 		return (
-			<div className="app">
+			<div className="app home">
 				<h1 className="title">workout.log()</h1>
 				<AuthPanel className="authPanel" authentication={this.authentication.bind(this)} />
 			</div>

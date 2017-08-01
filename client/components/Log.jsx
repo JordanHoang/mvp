@@ -34,10 +34,10 @@ class Log extends React.Component {
 		return (
 			<div className="log">
 				<span className="description">	{this.props.log.description} </span>
-				<span className="calories"> {this.props.log.calories} calories</span>
 				<a className="delete" onClick={this.handleDelete.bind(this)}>
 					<i className="fa fa-minus-square" aria-hidden="true"></i>
 				</a>
+				<span className="calories"> {this.props.log.calories} calories</span>
 			</div>
 			
 		);
