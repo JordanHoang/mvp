@@ -9,37 +9,74 @@ module.exports = {
 		get: (req, res) => {
 			var username = req.params.username;
 
-			User.findOne({userName: username}, (err, user) => {
-				console.log('this the user', user);
+			// var query = User.findOne({userName: username});
 
-				var userId = user._id;
-				console.log(userId);
+			// query.select('logsPush');
 
-				Log.find({ _id: userId}, (err, logs) => {
-					if (err) {
-						return console.log(err);
-					}
+			// query.exec( (err, logs) => {
+			// 	if (err) {
+			// 		console.log(err)
+			// 	}
 
-					console.log('LOGS!!!', logs)
+			// 	console.log('LOGS', logs.logsPush);
+			// 	res.status(200);
+			// 	res.json(logs.logsPush);
+			// })
 
-					res.json(logs)
-				});
-			});
-		},
-		// post a new log to a db
-		post: (req, res) => {
-			var newLog = Log({
-				activity: req.body.activity,
-				description: req.body.description,
-				calories: req.body.calories
-			});
-
-			newLog.save( (err) => {
+			User.findOne({userName: username}, 'logsPush', function (err, logs) {
 				if (err) {
 					return console.log(err);
 				}
+				console.log(logs.logsPush);
+				res.json(logs.logsPush);
+			})
+		},
 
-				res.sendStatus(201);
+		// post a new log to a db
+		post: (req, res) => {
+
+			var username = req.params.username;
+
+			User.findOne({userName: username}, (err, user) => {
+
+				var userId = user._id;
+
+				var newLog = {
+					activity: req.body.activity,
+					description: req.body.description,
+					calories: req.body.calories,
+					// _creator: userId
+				};
+
+				// User.logsPush.push(newLog);
+				// User.save( (err) => {
+				// 	if (err) {
+				// 		return console.log(err);
+				// 	}
+
+				// 	res.sendStatus(201);
+				// });
+
+				User.findByIdAndUpdate(
+	        userId,
+	        {$push: {"logsPush": newLog}},
+	        {safe: true, upsert: true, new : true},
+	        function(err, model) {
+	          if (err) {
+	          	console.log(err)
+	          };
+
+	          res.sendStatus(201);
+	        }
+		    );
+
+				// newLog.save( (err) => {
+				// 	if (err) {
+				// 		return console.log(err);
+				// 	}
+
+				// 	res.sendStatus(201);
+				// })
 			});
 		}
 	},

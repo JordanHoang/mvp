@@ -25,13 +25,12 @@ var userSchema = new Schema ({
 		type: Number,
 		required: true
 	},
-	logs: [{type: ObjectId, ref: Log}]
+	logsPush: [],
+	logs: [{type: Schema.Types.ObjectId, ref: 'Log'}]
 });
 
-var User = mongoose.model('user', userSchema);
-
 var logSchema = new Schema ({
-	_creator : { type: Number, ref: 'User' },
+	_creator: { type: Schema.Types.ObjectId, ref: 'User' },
 	activity: {
 		type: String,
 		required: true
@@ -46,6 +45,7 @@ var logSchema = new Schema ({
 	}
 }, { timestamps: { createdAt: 'created_at' } });
 
+var User = mongoose.model('user', userSchema);
 var Log = mongoose.model('log', logSchema);
 
 module.exports.log = Log;
