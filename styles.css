@@ -64,6 +64,11 @@ html, body {
 	color: green;
 }
 
+.foodSearch {
+	margin: auto;
+	text-align: center;
+}
+
 .activityForm {
 	margin: auto;
 	text-align: center;

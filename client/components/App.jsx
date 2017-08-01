@@ -1,7 +1,8 @@
 import React from 'react';
 import ActivityForm from './ActivityForm.jsx';
 import LogWindow from './LogWindow.jsx';
-import AuthPanel from './AuthPanel.jsx'
+import AuthPanel from './AuthPanel.jsx';
+import FoodSearch from './FoodSearch.jsx'
 import * as LogModel from '../models/logs.js';
 
 class App extends React.Component {
@@ -85,6 +86,7 @@ class App extends React.Component {
 							</span>
 						</span>
 					</div>
+					<FoodSearch />
 					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
 					<h3 className='todaysLog'>Today's Log</h3>
 					<LogWindow logs={this.state.logs} updateLogs={this.updateLogs.bind(this)} userName = {this.state.userName} />
