@@ -75,7 +75,7 @@ class AuthPanel extends React.Component {
 					<label>Password</label><input className="input" name="password" type="password"></input>
 					<button type="submit">Sign In</button>
 				</form>
-				<a onClick={this.signupRequest.bind(this)} href="#">Create an account</a>
+				<a className="createAccountLink" onClick={this.signupRequest.bind(this)} href="#">Create an account</a>
 			</div>
 		);
 	}

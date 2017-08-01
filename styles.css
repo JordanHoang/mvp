@@ -34,6 +34,10 @@
 	color: white;
 }
 
+.createAccountLink {
+	color: white;
+}
+
 .signupPanel {
 	margin: auto;
 	text-align: center;
@@ -61,7 +65,8 @@
 }
 
 .input {
-	margin: 5px;
+	margin: 10px;
+	color: black;
 }
 
 .todaysLog {
