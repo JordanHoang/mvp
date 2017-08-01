@@ -29,6 +29,10 @@ app.use('/styles.css', (req, res, next) => {
 	res.sendFile(path.join(__dirname, '../styles.css'));
 });
 
+app.use('/images/homepageImage.jpg', (req, res, next) => {
+	res.sendFile(path.join(__dirname, '../images/homepageImage.jpg'));
+});
+
 // allow for cross origin requests
 app.use( (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');

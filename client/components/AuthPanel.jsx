@@ -56,11 +56,11 @@ class AuthPanel extends React.Component {
 			return (
 				<div className="signupPanel" onSubmit={this.handleSignup.bind(this)}>
 					<form method="POST">
-						<label>Username</label><input name="username"></input><br/>
-						<label>Password</label><input name="password" type="password"></input><br/>
-						<label>First Name</label><input name="firstname"></input><br/>
-						<label>Last Name</label><input name="lastname"></input><br/>
-						<label>Desired Calories</label><input name="calories" type="number"></input><br/>
+						<label>Username</label><input className="input" name="username"></input><br/>
+						<label>Password</label><input className="input" name="password" type="password"></input><br/>
+						<label>First Name</label><input className="input" name="firstname"></input><br/>
+						<label>Last Name</label><input className="input" name="lastname"></input><br/>
+						<label>Desired Calories</label><input className="input" name="calories" type="number"></input><br/>
 						<button type="submit">Sign Up</button><br/>
 					</form>
 					<a onClick={this.signupRequest.bind(this)} href="#">Sign In</a>

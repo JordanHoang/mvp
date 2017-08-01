@@ -4,7 +4,7 @@
 }
 .home {
 	height: 100vh;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://static.garmincdn.com/en_GB/store/sports_rec/subcategory/running/hero_running_watch.jpg');
+	background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/images/homepageImage.jpg');
 }
 .title {
 	text-align: center;
@@ -42,6 +42,7 @@
 	margin: auto;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
+	color: white;
 }
 
 .remainingCals {
