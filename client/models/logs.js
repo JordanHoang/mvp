@@ -7,8 +7,9 @@ export const getAllLogs = (username, callback) => {
 	$.ajax({
 	  type: "GET",
 	  url: `${url}/logs/${username}`,
+	  // data is id, current calories, and logsPush
 	  success: (data) => {
-	  	data.reverse()
+	  	data.logsPush.reverse()
 	  	callback(data);
 	  },
 	  error: (data) => {

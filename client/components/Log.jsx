@@ -9,11 +9,11 @@ class Log extends React.Component {
 	}
 
 	componentWillMount () {
-		var timeArray = new Date(this.props.log.created_at).toLocaleString().split(',');
+		var timeArray = new Date(this.props.log.timestamp).toLocaleTimeString();
 		// check if hour is greater/less 12 aka check if it's PM or AM
-
+		console.log('time is money, so I went and bought a rolex', new Date(this.props.log.timestamp).toLocaleTimeString());
 		this.setState({
-			formattedTime: `${timeArray[1]}`
+			formattedTime: this.props.log.timestamp
 		})
 
 	}

@@ -25,6 +25,10 @@ var userSchema = new Schema ({
 		type: Number,
 		required: true
 	},
+	currentCalories: {
+		type: Number,
+		required: true
+	},
 	logsPush: [],
 	logs: [{type: Schema.Types.ObjectId, ref: 'Log'}]
 });

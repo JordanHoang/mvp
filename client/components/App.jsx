@@ -8,7 +8,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentCalories: -2500,
+			currentCalories: 0,
 			userName: '',
 			name: '',
 			logs: [],
@@ -35,17 +35,20 @@ class App extends React.Component {
 			console.log('yusah', this.state.userName);
 			LogModel.getAllLogs(this.state.userName, (data) => {
 				this.setState({
-					logs: data
+					logs: data.logsPush,
+					currentCalories: data.currentCalories
 				})
 			})
 		})
 	}
 
 	// update logs upon log post
+	// data is user id, current calories, and logsPush
 	updateLogs() {
 		LogModel.getAllLogs(this.state.userName, (data) => {
 			this.setState({
-				logs:data
+				logs: data.logsPush,
+				currentCalories: data.currentCalories
 			})
 		});
 	}

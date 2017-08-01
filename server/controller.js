@@ -23,12 +23,13 @@ module.exports = {
 			// 	res.json(logs.logsPush);
 			// })
 
-			User.findOne({userName: username}, 'logsPush', function (err, logs) {
+			User.findOne({userName: username}, 'logsPush currentCalories', function (err, user) {
 				if (err) {
 					return console.log(err);
 				}
-				console.log(logs.logsPush);
-				res.json(logs.logsPush);
+
+				// user sends id, current calories, and logs
+				res.json(user);
 			})
 		},
 
@@ -40,12 +41,15 @@ module.exports = {
 			User.findOne({userName: username}, (err, user) => {
 
 				var userId = user._id;
+				var currentCal = user.currentCalories;
+				console.log('WAY UP HERE', user.currentCalories);
 
 				var newLog = {
 					activity: req.body.activity,
 					description: req.body.description,
 					calories: req.body.calories,
 					// _creator: userId
+					timestamp: new Date()
 				};
 
 				// User.logsPush.push(newLog);
@@ -53,6 +57,7 @@ module.exports = {
 				// 	if (err) {
 				// 		return console.log(err);
 				// 	}
+
 
 				// 	res.sendStatus(201);
 				// });
@@ -65,8 +70,20 @@ module.exports = {
 	          if (err) {
 	          	console.log(err)
 	          };
-
-	          res.sendStatus(201);
+	          console.log('AFTER PUSH')
+	          User.findByIdAndUpdate(
+	          	userId,
+	          	{$set: {currentCalories: currentCal - req.body.calories }},
+	          	{safe: true, upsert: true, new : true},
+	          	function(err, model) {
+	          	  if (err) {
+	          	  	console.log(err)
+	          	  };
+	          	  console.log('AFTER CALORIE UPDATE')
+	          	  console.log(user.currentCalories)
+	          	  res.sendStatus(201);
+	          	}
+	          )
 	        }
 		    );
 
@@ -90,6 +107,7 @@ module.exports = {
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,
 				desiredCalories: req.body.desiredCalories,
+				currentCalories: req.body.desiredCalories,
 				logs: []
 			});
 
