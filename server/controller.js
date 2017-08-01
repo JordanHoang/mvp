@@ -1,6 +1,16 @@
 var bluebird = require('bluebird');
 var Log = require('../db/schemas.js').log
 var User = require('../db/schemas.js').user;
+var schedule = require('node-schedule');
+
+// reset daily calories to desired calories
+var calorieReset = schedule.scheduleJob('0 0 * * *', () => { 
+	User.find( {}, (err, users) => {
+		users.forEach( (user) => {
+			user.currentCalories = user.desiredCalories;
+		})
+	})
+}) // run everyday at midnight
 
 module.exports = {
 
