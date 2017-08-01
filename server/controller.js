@@ -70,7 +70,8 @@ module.exports = {
 					res.sendStatus(404);
 				}
 
-				res.sendStatus(201);
+				res.status(201);
+				res.json(user.firstName);
 			})
 		}
 	}

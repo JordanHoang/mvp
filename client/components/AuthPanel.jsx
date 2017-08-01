@@ -44,7 +44,7 @@ class AuthPanel extends React.Component {
 
 		AuthModel.signin(credentials, (data) => {
 			console.log('successful signin')
-			this.props.authentication();
+			this.props.authentication(data);
 		})
 
 		e.preventDefault();

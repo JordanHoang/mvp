@@ -9,7 +9,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			currentCalories: -2500,
-			name: 'Jordan',
+			name: '',
 			logs: [],
 			isLoggedIn: false
 		};
@@ -23,12 +23,15 @@ class App extends React.Component {
 		});
 	}
 
-	authentication() {
+	// change isLoggedIn state upon correct signin
+	authentication(name) {
 		this.setState({
-			isLoggedIn: true
+			isLoggedIn: true,
+			name: name
 		})
 	}
 
+	// update logs upon log post
 	updateLogs() {
 		LogModel.getAllLogs ( (data) => {
 			this.setState({
@@ -37,6 +40,7 @@ class App extends React.Component {
 		});
 	}
 
+	// update calorie count upon post
 	updateCalorieCount(log) {
 		if (log.activity === 'exercise') {
 			this.setState({
