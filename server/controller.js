@@ -42,15 +42,18 @@ module.exports = {
 
 				var userId = user._id;
 				var currentCal = user.currentCalories;
-				console.log('WAY UP HERE', user.currentCalories);
 
 				var newLog = {
 					activity: req.body.activity,
 					description: req.body.description,
-					calories: req.body.calories,
+					calories: Number(req.body.calories),
 					// _creator: userId
 					timestamp: new Date()
 				};
+
+				if (newLog.activity === 'exercise') {
+					req.body.calories = -req.body.calories
+				}
 
 				// User.logsPush.push(newLog);
 				// User.save( (err) => {
@@ -70,17 +73,14 @@ module.exports = {
 	          if (err) {
 	          	console.log(err)
 	          };
-	          console.log('AFTER PUSH')
 	          User.findByIdAndUpdate(
 	          	userId,
-	          	{$set: {currentCalories: currentCal - req.body.calories }},
+	          	{$set: {currentCalories: currentCal + Number(req.body.calories) }},
 	          	{safe: true, upsert: true, new : true},
 	          	function(err, model) {
 	          	  if (err) {
 	          	  	console.log(err)
 	          	  };
-	          	  console.log('AFTER CALORIE UPDATE')
-	          	  console.log(user.currentCalories)
 	          	  res.sendStatus(201);
 	          	}
 	          )
@@ -106,8 +106,8 @@ module.exports = {
 				password: req.body.password,
 				firstName: req.body.firstName,
 				lastName: req.body.lastName,
-				desiredCalories: req.body.desiredCalories,
-				currentCalories: req.body.desiredCalories,
+				desiredCalories: -req.body.desiredCalories,
+				currentCalories: -req.body.desiredCalories,
 				logs: []
 			});
 
