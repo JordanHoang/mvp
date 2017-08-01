@@ -2,23 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = mongoose.SchemaTypes.ObjectId;
 
-var logSchema = new Schema ({
-	activity: {
-		type: String,
-		required: true
-	},
-	description: {
-		type: String,
-		required: true
-	},
-	calories: {
-		type: Number,
-		required: true
-	}
-}, { timestamps: { createdAt: 'created_at' } });
-
-var Log = mongoose.model('log', logSchema);
-
 var userSchema = new Schema ({
 
 	userName: {
@@ -46,6 +29,24 @@ var userSchema = new Schema ({
 });
 
 var User = mongoose.model('user', userSchema);
+
+var logSchema = new Schema ({
+	_creator : { type: Number, ref: 'User' },
+	activity: {
+		type: String,
+		required: true
+	},
+	description: {
+		type: String,
+		required: true
+	},
+	calories: {
+		type: Number,
+		required: true
+	}
+}, { timestamps: { createdAt: 'created_at' } });
+
+var Log = mongoose.model('log', logSchema);
 
 module.exports.log = Log;
 module.exports.user = User;

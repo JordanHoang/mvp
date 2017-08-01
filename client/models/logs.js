@@ -2,17 +2,25 @@ import $ from 'jquery';
 
 export const url = 'http://localhost:8000';
 
-export const getAllLogs = (callback) => {
-	$.get(`${url}/logs`, (data) => {
-		data.reverse()
-		callback(data);
-	})
-	.fail( (err) => {
-		console.log('Invalid request');
-	})
+export const getAllLogs = (username, callback) => {
+	console.log('username???', username);
+	var options = {userName: username};
+	$.ajax({
+	  type: "GET",
+	  url: `${url}/logs/${username}`,
+	  dataType: 'application/json',
+	  success: (data) => {
+	  	data.reverse()
+	  	callback(data);
+	  },
+	  error: (data) => {
+	  	console.log('Invalid get')
+	  }
+	});
 };
 
 export const postLog = (log, callback) => {
+	// post contains username, activity, description, and calories
 	$.ajax({
 	  type: "POST",
 	  url: `${url}/logs`,
@@ -20,6 +28,9 @@ export const postLog = (log, callback) => {
 	  contentType: 'application/json',
 	  success: (data) => {
 	  	callback(data);
+	  },
+	  error: (data) => {
+	  	console.log('Invalid log post')
 	  }
 	});
 };

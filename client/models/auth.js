@@ -23,7 +23,7 @@ export const signin = (credentials, callback) => {
 	  url: `${url}/signin`,
 	  data: JSON.stringify(credentials),
 	  contentType: 'application/json',
-	  // on success, will return first name and desired calories
+	  // on success, will return username, first name and desired calories
 	  success: (data) => {
 	  	console.log('Successful signin');
 	  	callback(data);

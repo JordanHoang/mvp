@@ -12,6 +12,7 @@ class ActivityForm extends React.Component {
 	handleSubmit(e) {
 
 		var newLog = {
+			userName: this.props.userName,
 			activity: e.target.activity.value,
 			description: e.target.description.value,
 			calories: e.target.calories.value
@@ -20,8 +21,7 @@ class ActivityForm extends React.Component {
 		console.log
 
 		LogModel.postLog(newLog, (data) => {
-			console.log('SUCCESSFUL POST')
-			this.props.updateLogs(data);
+			this.props.updateLogs(newLog.userName);
 
 			this.props.updateCalorieCount(newLog);
 		});

@@ -9,32 +9,41 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			currentCalories: -2500,
+			userName: '',
 			name: '',
 			logs: [],
 			isLoggedIn: false
 		};
 	}
 
-	componentDidMount() {
-		LogModel.getAllLogs( (data) => {
-			this.setState({
-				logs: data
-			})
-		});
-	}
+	// componentDidMount() {
+	// 	LogModel.getAllLogs(this.state.userName, (data) => {
+	// 		this.setState({
+	// 			logs: data
+	// 		})
+	// 	});
+	// }
 
 	// change isLoggedIn state upon correct signin
 	authentication(info) {
 		this.setState({
 			isLoggedIn: true,
+			userName: info.userName,
 			name: info.firstName,
 			currentCalories: info.desiredCalories
+		}, () => {
+			console.log('yusah', this.state.userName);
+			LogModel.getAllLogs(this.state.userName, (data) => {
+				this.setState({
+					logs: data
+				})
+			})
 		})
 	}
 
 	// update logs upon log post
 	updateLogs() {
-		LogModel.getAllLogs ( (data) => {
+		LogModel.getAllLogs(this.state.userName, (data) => {
 			this.setState({
 				logs:data
 			})
@@ -60,7 +69,7 @@ class App extends React.Component {
 					<h1 className="title">workout.log()</h1>
 					<h3>Welcome {this.state.name}</h3>
 					<h4>Net calories: {this.state.currentCalories}</h4>
-					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} />
+					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
 					<h3>Today's Log</h3>
 					<LogWindow logs={this.state.logs} />
 				</div>

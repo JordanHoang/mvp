@@ -7,6 +7,7 @@ module.exports = {
 	logs: {
 		// return all logs for an individual user
 		get: (req, res) => {
+			var username = req.params.username;
 			Log.find({}, (err, logs) => {
 				if (err) {
 					return console.log(err);
@@ -71,7 +72,7 @@ module.exports = {
 				}
 
 				res.status(201);
-				res.json({firstName: user.firstName, desiredCalories: user.desiredCalories});
+				res.json({userName: user.userName, firstName: user.firstName, desiredCalories: user.desiredCalories});
 			})
 		}
 	}
