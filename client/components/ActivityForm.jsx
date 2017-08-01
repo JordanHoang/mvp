@@ -17,9 +17,11 @@ class ActivityForm extends React.Component {
 			calories: e.target.calories.value
 		};
 
+		console.log
+
 		LogModel.postLog(newLog, (data) => {
 			console.log('SUCCESSFUL POST')
-			this.props.updateLogs();
+			this.props.updateLogs(data);
 
 			this.props.updateCalorieCount(newLog);
 		});

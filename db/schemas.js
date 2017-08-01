@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = mongoose.SchemaTypes.ObjectId;
 
 var logSchema = new Schema ({
 	activity: {
@@ -13,13 +14,8 @@ var logSchema = new Schema ({
 	calories: {
 		type: Number,
 		required: true
-	},
-	timestamp: {
-		type: String,
-		// get new date, convert to time string, split on spaces, get 0th index which is the time
-		default: new Date().toTimeString().split(' ')[0]
 	}
-});
+}, { timestamps: { createdAt: 'created_at' } });
 
 var Log = mongoose.model('log', logSchema);
 
@@ -45,7 +41,8 @@ var userSchema = new Schema ({
 	desiredCalories: {
 		type: Number,
 		required: true
-	}
+	},
+	logs: [{type: ObjectId, ref: Log}]
 });
 
 var User = mongoose.model('user', userSchema);

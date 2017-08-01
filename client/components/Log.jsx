@@ -9,26 +9,13 @@ class Log extends React.Component {
 	}
 
 	componentWillMount () {
-		// split xx:xx:xx format into an array of [hour, minute, second]
-		var timeArray = this.props.log.timestamp.split(':');
+		var timeArray = new Date(this.props.log.created_at).toLocaleString().split(',');
 		// check if hour is greater/less 12 aka check if it's PM or AM
 
-		// if greater than 12, subtract 12 and add pm
-		if (timeArray[0] > '12') {
-			this.setState({
-				formattedTime: `${timeArray[0] -12}:${timeArray[1]}pm`
-			});
-		// else if exactly 12, keep hour and add pm
-		} else if (timeArray[0] === '12') {
-			this.setState({
-				formattedTime: `${timeArray[0]}:${timeArray[1]}pm`
-			})
-		// else if less than 12, keep hour and add am
-		} else if (timeArray[0] < '12') {
-			this.setState({
-				formattedTime: `${timeArray[0]}:${timeArray[1]}am`
-			})
-		}
+		this.setState({
+			formattedTime: `${timeArray[1]}`
+		})
+
 	}
 
 	render() {

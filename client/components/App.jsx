@@ -1,6 +1,7 @@
 import React from 'react';
 import ActivityForm from './ActivityForm.jsx';
 import LogWindow from './LogWindow.jsx';
+import AuthPanel from './AuthPanel.jsx'
 import * as LogModel from '../models/logs.js';
 
 class App extends React.Component {
@@ -9,7 +10,8 @@ class App extends React.Component {
 		this.state = {
 			currentCalories: -2500,
 			name: 'Jordan',
-			logs: []
+			logs: [],
+			isLoggedIn: false
 		};
 	}
 
@@ -19,6 +21,12 @@ class App extends React.Component {
 				logs: data
 			})
 		});
+	}
+
+	authentication() {
+		this.setState({
+			isLoggedIn: true
+		})
 	}
 
 	updateLogs() {
@@ -41,16 +49,25 @@ class App extends React.Component {
 	}
 
 	render () {
+		if (this.state.isLoggedIn) {
+			return (
+				<div className="app">
+					<h1 className="title">workout.log()</h1>
+					<h3>Welcome {this.state.name}</h3>
+					<h4>Net calories: {this.state.currentCalories}</h4>
+					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} />
+					<h3>Today's Log</h3>
+					<LogWindow logs={this.state.logs} />
+				</div>
+			);
+		};
+
 		return (
 			<div className="app">
 				<h1 className="title">workout.log()</h1>
-				<h3>Welcome {this.state.name}</h3>
-				<h4>Net calories: {this.state.currentCalories}</h4>
-				<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} />
-				<h3>Today's Log</h3>
-				<LogWindow logs={this.state.logs} />
+				<AuthPanel authentication={this.authentication.bind(this)} />
 			</div>
-		);
+		)
 	}
 }
 
