@@ -9,9 +9,10 @@ class FoodSearch extends React.Component {
 	handleSearch(e) {
 
 		var options = {query: e.target.search.value}
-		
+
 		FoodModel.searchNutritionix(options, (data) => {
-			console.log('IM BACK!')
+
+			this.props.updateSearchResults(data.hits);
 		});
 
 		e.preventDefault();

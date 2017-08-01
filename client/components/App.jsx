@@ -2,7 +2,8 @@ import React from 'react';
 import ActivityForm from './ActivityForm.jsx';
 import LogWindow from './LogWindow.jsx';
 import AuthPanel from './AuthPanel.jsx';
-import FoodSearch from './FoodSearch.jsx'
+import FoodSearch from './FoodSearch.jsx';
+import SearchResultWindow from './SearchResultWindow.jsx'
 import * as LogModel from '../models/logs.js';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
 			name: '',
 			logs: [],
 			isLoggedIn: false,
+			searchResults: []
 		};
 	}
 
@@ -65,6 +67,13 @@ class App extends React.Component {
 			})
 	}
 
+	updateSearchResults(hits) {
+		this.setState({
+			searchResults: hits
+		})
+
+	}
+
 	handleSignout() {
 		this.setState({
 			isLoggedIn: false
@@ -85,7 +94,8 @@ class App extends React.Component {
 							</span>
 						</span>
 					</div>
-					<FoodSearch />
+					<FoodSearch updateSearchResults={this.updateSearchResults.bind(this)}/>
+					<SearchResultWindow searchResults={this.state.searchResults} />
 					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
 					<h3 className='todaysLog'>Today's Log</h3>
 					<LogWindow logs={this.state.logs} updateLogs={this.updateLogs.bind(this)} userName = {this.state.userName} />

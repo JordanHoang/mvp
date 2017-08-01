@@ -13,7 +13,6 @@ export const searchNutritionix = (options, callback) => {
 	}
 
 	$.get(`${url}/${options.query}`, searchOptions, function(data) {
-		console.log(data);
 		callback(data);
 	})
 
