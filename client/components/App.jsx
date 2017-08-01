@@ -65,12 +65,19 @@ class App extends React.Component {
 			})
 	}
 
+	handleSignout() {
+		this.setState({
+			isLoggedIn: false
+		})
+	}
+
 	render () {
 		if (this.state.isLoggedIn) {
 			return (
 				<div className="app">
 					<h1 className="title">workout.log()</h1>
 					<h3>Welcome {this.state.name}</h3>
+					<a href="#" onClick={this.handleSignout.bind(this)}>Signout</a>
 					<h4>Net calories: {this.state.currentCalories}</h4>
 					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
 					<h3>Today's Log</h3>

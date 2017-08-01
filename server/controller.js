@@ -42,8 +42,15 @@ module.exports = {
 
 				var userId = user._id;
 				var currentCal = user.currentCalories;
+				console.log('CURRENT ARRRR', user.logsPush);
 
+				if (user.logsPush.length) {
+					var lastId = user.logsPush[user.logsPush.length - 1].id
+				} else {
+					var lastId = 0
+				}
 				var newLog = {
+					id: lastId + 1,
 					activity: req.body.activity,
 					description: req.body.description,
 					calories: Number(req.body.calories),
@@ -54,16 +61,6 @@ module.exports = {
 				if (newLog.activity === 'exercise') {
 					req.body.calories = -req.body.calories
 				}
-
-				// User.logsPush.push(newLog);
-				// User.save( (err) => {
-				// 	if (err) {
-				// 		return console.log(err);
-				// 	}
-
-
-				// 	res.sendStatus(201);
-				// });
 
 				User.findByIdAndUpdate(
 	        userId,
@@ -87,6 +84,16 @@ module.exports = {
 	        }
 		    );
 
+		    ///////////////// ATTEMPT AT DOING FOREIGN KEYS AND POPULATION /////////////
+				// User.logsPush.push(newLog);
+				// User.save( (err) => {
+
+				// 	if (err) {
+				// 		return console.log(err);
+				// 	}
+				// 	res.sendStatus(201);
+				// });
+
 				// newLog.save( (err) => {
 				// 	if (err) {
 				// 		return console.log(err);
@@ -94,7 +101,13 @@ module.exports = {
 
 				// 	res.sendStatus(201);
 				// })
+
+				////////////////////////////////////////////////////////////////////////////
 			});
+		},
+
+		delete: (req, res) => {
+
 		}
 	},
 

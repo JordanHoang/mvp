@@ -15,7 +15,10 @@ class Log extends React.Component {
 		this.setState({
 			formattedTime: this.props.log.timestamp
 		})
+	}
 
+	handleDelete () {
+		console.log(this.props.log);
 	}
 
 	render() {
@@ -24,6 +27,9 @@ class Log extends React.Component {
 				<span>{this.state.formattedTime} </span>
 				<span>	{this.props.log.description} </span>
 				<span> {this.props.log.calories} calories</span>
+				<a className="delete" onClick={this.handleDelete.bind(this)}>
+					<i className="fa fa-minus-square" aria-hidden="true"></i>
+				</a>
 			</div>
 		);
 	}

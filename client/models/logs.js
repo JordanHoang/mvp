@@ -34,3 +34,20 @@ export const postLog = (log, callback) => {
 	  }
 	});
 };
+
+export const deleteLog = (log, callback) => {
+	// post contains username, activity, description, and calories
+	$.ajax({
+	  type: "DELETE",
+	  url: `${url}/logs/${log.userName}`,
+	  data: JSON.stringify(log),
+	  contentType: 'application/json',
+	  success: (data) => {
+	  	callback(data);
+	  },
+	  error: (data) => {
+	  	console.log('Invalid log post')
+	  }
+	});
+};
+
