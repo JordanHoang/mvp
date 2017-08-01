@@ -1,4 +1,5 @@
 import React from 'react';
+import * as LogModel from '../models/logs.js'
 
 class Log extends React.Component {
 	constructor(props) {
@@ -17,8 +18,14 @@ class Log extends React.Component {
 		})
 	}
 
-	handleDelete () {
-		console.log(this.props.log);
+	handleDelete (e) {
+
+		this.props.log.userName = this.props.userName;
+
+		LogModel.deleteLog(this.props.log, (data) => {
+			this.props.updateLogs();
+		})
+		e.preventDefault()
 	}
 
 	render() {

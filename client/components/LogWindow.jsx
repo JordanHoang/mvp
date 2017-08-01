@@ -12,7 +12,7 @@ class LogWindow extends React.Component {
 			<div className="logWindow">
 				{this.props.logs.map( (log) => {
 					return (
-						<Log log={log} />
+						<Log log={log} updateLogs={this.props.updateLogs} userName = {this.props.userName} />
 					)
 				})}
 			</div>

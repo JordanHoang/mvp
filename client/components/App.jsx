@@ -81,7 +81,7 @@ class App extends React.Component {
 					<h4>Net calories: {this.state.currentCalories}</h4>
 					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
 					<h3>Today's Log</h3>
-					<LogWindow logs={this.state.logs} />
+					<LogWindow logs={this.state.logs} updateLogs={this.updateLogs.bind(this)} userName = {this.state.userName} />
 				</div>
 			);
 		};

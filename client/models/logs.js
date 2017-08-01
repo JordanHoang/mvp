@@ -36,7 +36,7 @@ export const postLog = (log, callback) => {
 };
 
 export const deleteLog = (log, callback) => {
-	// post contains username, activity, description, and calories
+	// log will contain id, activity, description, calories, timestamp
 	$.ajax({
 	  type: "DELETE",
 	  url: `${url}/logs/${log.userName}`,
@@ -46,7 +46,7 @@ export const deleteLog = (log, callback) => {
 	  	callback(data);
 	  },
 	  error: (data) => {
-	  	console.log('Invalid log post')
+	  	console.log('Invalid delete request')
 	  }
 	});
 };

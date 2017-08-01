@@ -21,7 +21,7 @@ class ActivityForm extends React.Component {
 		console.log
 
 		LogModel.postLog(newLog, (data) => {
-			this.props.updateLogs(newLog.userName);
+			this.props.updateLogs();
 
 			this.props.updateCalorieCount(newLog);
 		});

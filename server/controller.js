@@ -107,8 +107,41 @@ module.exports = {
 		},
 
 		delete: (req, res) => {
+					var username = req.params.username;
+					var id = req.body.id;
 
-		}
+					User.findOne({userName: username}, (err, user) => {
+						var userId = user._id;
+						var currentCal = user.currentCalories;
+
+						if (req.body.activity === 'exercise') {
+							req.body.calories = -req.body.calories
+						}
+
+						User.findByIdAndUpdate(
+			        userId,
+			        {$pull: {"logsPush": {id: id} } },
+			        {safe: true, upsert: true, new : true},
+			        function(err, model) {
+			          if (err) {
+			          	console.log(err)
+			          };
+			          User.findByIdAndUpdate(
+			          	userId,
+			          	{$set: {currentCalories: currentCal + Number(req.body.calories) }},
+			          	{safe: true, upsert: true, new : true},
+			          	function(err, model) {
+			          	  if (err) {
+			          	  	console.log(err)
+			          	  };
+			          	  res.sendStatus(202);
+			          	}
+			          )
+			        }
+				    );
+					}
+				)
+			}
 	},
 
 	users: {
