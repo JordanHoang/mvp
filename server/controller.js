@@ -8,12 +8,22 @@ module.exports = {
 		// return all logs for an individual user
 		get: (req, res) => {
 			var username = req.params.username;
-			Log.find({}, (err, logs) => {
-				if (err) {
-					return console.log(err);
-				}
 
-				res.json(logs)
+			User.findOne({userName: username}, (err, user) => {
+				console.log('this the user', user);
+
+				var userId = user._id;
+				console.log(userId);
+
+				Log.find({ _id: userId}, (err, logs) => {
+					if (err) {
+						return console.log(err);
+					}
+
+					console.log('LOGS!!!', logs)
+
+					res.json(logs)
+				});
 			});
 		},
 		// post a new log to a db

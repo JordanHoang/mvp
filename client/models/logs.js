@@ -23,7 +23,7 @@ export const postLog = (log, callback) => {
 	// post contains username, activity, description, and calories
 	$.ajax({
 	  type: "POST",
-	  url: `${url}/logs`,
+	  url: `${url}/logs${log.userName}`,
 	  data: JSON.stringify(log),
 	  contentType: 'application/json',
 	  success: (data) => {
