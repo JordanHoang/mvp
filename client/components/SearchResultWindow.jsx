@@ -15,7 +15,7 @@ class SearchResultWindow extends React.Component {
 				<Grid>
 
 					{this.props.searchResults.map( (result, i) => 
-							<Col xs={6} md={4}><SearchResultEntry result={result.fields} /></Col>
+							<Col xs={6} md={4}><SearchResultEntry result={result.fields} userName = {this.props.userName} updateLogs={this.props.updateLogs}/></Col>
 					)}
 
 				</Grid>
