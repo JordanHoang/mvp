@@ -1,19 +1,20 @@
 import $ from 'jquery';
+import {NUTRITIONIX_APP_ID, NUTRITIONIX_APP_KEY} from '../../config.js';
 
 export const url = "https://api.nutritionix.com/v1_1/search";
 
 
 export const searchNutritionix = (options, callback) => {
+	console.log('inside da search', NUTRITIONIX_APP_ID, '---', NUTRITIONIX_APP_KEY)
 	var searchOptions = {
-		appId: window.NUTRITIONIX_APP_ID,  
-		appKey: window.NUTRITIONIX_APP_KEY
-		query: options.query,
-		fields: item_name, item_id,
-		limit: 5
+		limit: 5,
+		appId: NUTRITIONIX_APP_ID,  
+		appKey: NUTRITIONIX_APP_KEY,
 	}
 
-	$.get(url, searchOptions, function(data) {
-		console.log(data)
+	$.get(`${url}/${options.query}`, searchOptions, function(data) {
+		console.log(data);
+		callback(data);
 	})
 
 };

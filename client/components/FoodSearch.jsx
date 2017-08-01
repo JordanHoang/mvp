@@ -1,16 +1,29 @@
 import React from 'react';
+import * as FoodModel from '../models/nutritionixSearch.js'
 
 class FoodSearch extends React.Component {
 	constructor(props) {
 		super(props)
 	}
 
+	handleSearch(e) {
+
+		var options = {query: e.target.search.value}
+		
+		FoodModel.searchNutritionix(options, (data) => {
+			console.log('IM BACK!')
+		});
+
+		e.preventDefault();
+	}
+
+
 	render () {
 
 		return (
 			<div className="foodSearch">
-				<form method="GET">
-					<label>Food Search</label><input className="input" name="search"></input>
+				<form method="GET" onSubmit={this.handleSearch.bind(this)}>
+					<label>Food Search</label><input type="text" className="input" name="search"></input>
 					<button type="submit"><i className="fa fa-search" aria-hidden="true"></i></button>
 				</form>
 			</div>

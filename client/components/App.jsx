@@ -33,7 +33,6 @@ class App extends React.Component {
 			name: info.firstName,
 			currentCalories: info.desiredCalories
 		}, () => {
-			console.log('yusah', this.state.userName);
 			LogModel.getAllLogs(this.state.userName, (data) => {
 				this.setState({
 					logs: data.logsPush,
