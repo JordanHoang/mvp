@@ -99,6 +99,7 @@ class App extends React.Component {
 					<ActivityForm updateLogs={this.updateLogs.bind(this)} updateCalorieCount={this.updateCalorieCount.bind(this)} userName = {this.state.userName} />
 					<h3 className='todaysLog'>Today's Log</h3>
 					<LogWindow logs={this.state.logs} updateLogs={this.updateLogs.bind(this)} userName = {this.state.userName} />
+					<br/>
 				</div>
 			);
 		};

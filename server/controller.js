@@ -7,7 +7,9 @@ var schedule = require('node-schedule');
 var calorieReset = schedule.scheduleJob('0 0 * * *', () => { 
 	User.find( {}, (err, users) => {
 		users.forEach( (user) => {
+			console.log('Resetting calories at midnight!');
 			user.currentCalories = user.desiredCalories;
+			user.logsPush = [];
 		})
 	})
 }) // run everyday at midnight
